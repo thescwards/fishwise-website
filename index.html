@@ -463,6 +463,39 @@
             color: var(--text-dark);
             font-size: 24px;
             cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 84px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 20px;
+            z-index: 99;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
         }
 
         @media (max-width: 900px) {
@@ -537,9 +570,16 @@
                 <a href="support.html">Support</a>
                 <a href="privacy.html">Privacy</a>
             </nav>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
         </div>
     </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features" onclick="closeMenu()">Features</a>
+        <a href="#screenshots" onclick="closeMenu()">Screenshots</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+    </div>
 
     <main>
         <section class="hero">
@@ -645,17 +685,23 @@
                         <p>Plan your fishing adventures with target species, locations, dates, and gear checklists. Never forget essential tackle again.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><img src="onboarding-forecast.png" alt="Fishing Forecast"></div>
+                        <div class="feature-icon">
+                            <img src="onboarding-forecast.png" alt="Fishing Forecast">
+                        </div>
                         <h3>Fishing Forecast</h3>
                         <p>Get AI-powered fishing conditions based on weather, moon phase, pressure, and more. Know the best times to fish.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><img src="onboarding-regulations.png" alt="Regulations"></div>
+                        <div class="feature-icon">
+                            <img src="onboarding-regulations.png" alt="Regulations">
+                        </div>
                         <h3>Regulations</h3>
                         <p>Stay legal with up-to-date fishing regulations for your state. License info, size limits, and seasonal restrictions.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><img src="onboarding-knowledge.png" alt="Species Knowledge"></div>
+                        <div class="feature-icon">
+                            <img src="onboarding-knowledge.png" alt="Species Knowledge">
+                        </div>
                         <h3>Species Knowledge</h3>
                         <p>Learn about each fish with detailed info including habitat, diet, size, conservation status, and fun facts.</p>
                     </div>
@@ -718,5 +764,17 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.remove('open');
+        }
+    </script>
 </body>
 </html>
