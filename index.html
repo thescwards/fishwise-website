@@ -165,10 +165,19 @@
             font-size: 24px; color: var(--accent); opacity: 0.4;
         }
 
+        /* ── Phone frame base ── */
+        .phone-frame {
+            width: 260px; border-radius: 32px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.06);
+            border: 6px solid #1a1a2e; background: #1a1a2e;
+            transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+        }
+        .phone-frame img { width: 100%; display: block; }
+        .phone-frame:hover { transform: translateY(-8px); }
+
         /* ── Showcase (phone + text side by side) ── */
-        .showcase { padding: 80px 0; }
-        .showcase:nth-of-type(even) { background: var(--bg-light); }
-        .showcase:nth-of-type(odd) { background: var(--bg-white); }
+        .showcase { padding: 80px 0; background: var(--bg-white); }
+        .showcase.alt-bg { background: var(--bg-light); }
         .showcase-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
             align-items: center; max-width: 1000px; margin: 0 auto;
@@ -497,7 +506,7 @@
         </section>
 
         <!-- Showcase: Bait & Tackle -->
-        <section class="showcase">
+        <section class="showcase alt-bg">
             <div class="container">
                 <div class="showcase-grid reversed">
                     <div class="showcase-phone">
@@ -537,7 +546,7 @@
         </section>
 
         <!-- Showcase: Weather Forecast -->
-        <section class="showcase">
+        <section class="showcase alt-bg">
             <div class="container">
                 <div class="showcase-grid reversed">
                     <div class="showcase-phone">
