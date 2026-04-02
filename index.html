@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FishWise - Your Smart Fishing Companion</title>
-    <meta name="description" content="Identify any fish instantly with AI. Track your catches, plan trips, check regulations, and get fishing forecasts. Download FishWise for iOS.">
+    <title>FishWise - AI-Powered Fishing Companion App</title>
+    <meta name="description" content="Identify any fish instantly with AI. Find boat ramps and bait shops, get spot analysis, track catches, and get 14-day fishing forecasts. Download FishWise for iOS.">
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +25,7 @@
             --gradient-end: #0EA5E9;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Outfit', sans-serif;
@@ -47,534 +43,293 @@
             z-index: 1;
         }
 
+        /* ── Header ── */
         header {
             padding: 20px 0;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-light);
         }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 44px; height: 44px; border-radius: 12px; }
+        .logo-text { font-size: 24px; font-weight: 700; color: var(--text-dark); }
+        nav { display: flex; align-items: center; gap: 32px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 15px; transition: color 0.2s; }
+        nav a:hover { color: var(--accent); }
 
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
+        /* ── Buttons ── */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 24px; border-radius: 12px; font-weight: 600;
+            font-size: 15px; text-decoration: none; transition: all 0.3s ease;
+            cursor: pointer; border: none;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.3);
+            color: white; box-shadow: 0 4px 20px rgba(8,145,178,0.3);
         }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(8,145,178,0.4); }
+        .btn-secondary { background: var(--bg-light); color: var(--text-dark); border: 1px solid var(--border-light); }
+        .btn-secondary:hover { background: var(--border-light); }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(8, 145, 178, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--bg-light);
-            color: var(--text-dark);
-            border: 1px solid var(--border-light);
-        }
-
-        .btn-secondary:hover {
-            background: var(--border-light);
-        }
-
+        /* ── Hero ── */
         .hero {
             padding: 160px 0 100px;
             text-align: center;
             background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
         }
-
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--accent-soft);
-            border: 1px solid rgba(8, 145, 178, 0.2);
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 24px;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; background: var(--accent-soft);
+            border: 1px solid rgba(8,145,178,0.2); border-radius: 100px;
+            font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 24px;
         }
-
         .hero-badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+            content: ''; width: 8px; height: 8px; background: var(--accent);
+            border-radius: 50%; animation: pulse 2s infinite;
         }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
 
         .hero h1 {
-            font-size: clamp(40px, 8vw, 72px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: var(--text-dark);
+            font-size: clamp(40px, 8vw, 72px); font-weight: 800;
+            line-height: 1.1; margin-bottom: 24px; color: var(--text-dark);
+            min-height: 160px;
         }
-
-        .hero h1 span {
+        .hero h1 .rotating-text {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            display: inline-block;
+            animation: fadeUp 0.5s ease;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero p { font-size: 20px; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .apple-icon { width: 20px; height: 20px; }
+
+        /* ── Section Headers ── */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; color: var(--text-dark); }
+        .section-header p { color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto; }
+
+        /* ── How It Works ── */
+        .how-it-works { padding: 100px 0; background: var(--bg-light); }
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .step-card { text-align: center; position: relative; }
+        .step-number {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white; font-size: 28px; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(8,145,178,0.3);
+        }
+        .step-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
+        .step-card p { color: var(--text-muted); font-size: 15px; line-height: 1.7; max-width: 300px; margin: 0 auto; }
+        .step-arrow {
+            position: absolute; top: 32px; right: -28px;
+            font-size: 24px; color: var(--accent); opacity: 0.4;
         }
 
-        .hero p {
-            font-size: 20px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .screenshots {
-            padding: 80px 0;
-            background: var(--bg-white);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-dark);
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 18px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
+        /* ── Screenshots ── */
+        .screenshots { padding: 80px 0; background: var(--bg-white); }
         .screenshot-carousel {
-            display: flex;
-            gap: 24px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 20px 0 40px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+            display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
+            padding: 20px 0 40px; -webkit-overflow-scrolling: touch; scrollbar-width: none;
         }
-
-        .screenshot-carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .screenshot-item {
-            flex: 0 0 auto;
-            scroll-snap-align: center;
-            position: relative;
-        }
-
-        .screenshot-item:first-child {
-            margin-left: calc(50vw - 150px);
-        }
-
-        .screenshot-item:last-child {
-            margin-right: calc(50vw - 150px);
-        }
-
+        .screenshot-carousel::-webkit-scrollbar { display: none; }
+        .screenshot-item { flex: 0 0 auto; scroll-snap-align: center; position: relative; }
+        .screenshot-item:first-child { margin-left: calc(50vw - 150px); }
+        .screenshot-item:last-child { margin-right: calc(50vw - 150px); }
         .screenshot-frame {
-            width: 280px;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.15),
-                0 0 0 1px var(--border-light);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            background: var(--bg-card);
+            width: 280px; border-radius: 32px; overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 0 0 1px var(--border-light);
+            transition: transform 0.4s ease, box-shadow 0.4s ease; background: var(--bg-card);
         }
-
         .screenshot-item:hover .screenshot-frame {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 35px 70px rgba(0, 0, 0, 0.2),
-                0 0 0 1px var(--border-light),
-                0 0 60px rgba(8, 145, 178, 0.1);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.2), 0 0 0 1px var(--border-light), 0 0 60px rgba(8,145,178,0.1);
         }
+        .screenshot-frame img { width: 100%; height: auto; display: block; }
+        .screenshot-label { text-align: center; margin-top: 16px; font-weight: 600; color: var(--text-muted); font-size: 14px; }
 
-        .screenshot-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
+        /* ── Before / After Demo ── */
+        .demo-section { padding: 100px 0; background: var(--bg-light); }
+        .demo-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: center; max-width: 900px; margin: 0 auto; }
+        .demo-before, .demo-after {
+            border-radius: 20px; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 1px solid var(--border-light);
         }
-
-        .screenshot-label {
-            text-align: center;
-            margin-top: 16px;
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 14px;
+        .demo-before img, .demo-after img { width: 100%; height: auto; display: block; }
+        .demo-arrow { font-size: 48px; color: var(--accent); text-align: center; }
+        .demo-label {
+            text-align: center; margin-top: 12px; font-weight: 600; font-size: 14px; color: var(--text-muted);
         }
-
-        .video-section {
-            padding: 80px 0;
-            background: var(--bg-light);
+        .demo-result-card {
+            background: var(--bg-card); border-radius: 20px; padding: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 1px solid var(--border-light);
         }
+        .demo-result-card h4 { font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+        .demo-result-card .sci-name { font-size: 14px; font-style: italic; color: var(--text-muted); margin-bottom: 16px; }
+        .demo-result-card .detail-row {
+            display: flex; justify-content: space-between; padding: 8px 0;
+            border-bottom: 1px solid var(--border-light); font-size: 14px;
+        }
+        .demo-result-card .detail-row:last-child { border-bottom: none; }
+        .demo-result-card .detail-label { color: var(--text-muted); }
+        .demo-result-card .detail-value { color: var(--text-dark); font-weight: 600; }
 
+        /* ── Video ── */
+        .video-section { padding: 80px 0; background: var(--bg-white); }
         .video-wrapper {
-            max-width: 400px;
-            margin: 0 auto;
-            aspect-ratio: 9 / 16;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            max-width: 400px; margin: 0 auto; aspect-ratio: 9 / 16;
+            border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
+        .video-wrapper iframe { width: 100%; height: 100%; }
 
-        .video-wrapper iframe {
-            width: 100%;
-            height: 100%;
-        }
-
-        .features {
-            padding: 100px 0;
-            background: var(--bg-white);
-        }
-
-        .features-grid {
-            justify-items: start;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
+        /* ── Features ── */
+        .features { padding: 100px 0; background: var(--bg-light); }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .feature-card {
-            text-align: left;
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 32px;
+            text-align: left; background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: 20px; padding: 32px; transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: rgba(8,145,178,0.3); transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .feature-icon { width: 72px; height: 72px; border-radius: 18px; overflow: hidden; margin-bottom: 20px; }
+        .feature-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .feature-icon-emoji {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 18px; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; margin-bottom: 20px;
+        }
+        .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); }
+        .feature-card p { color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+
+        /* ── Pricing ── */
+        .pricing { padding: 100px 0; background: var(--bg-white); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 800px; margin: 0 auto; }
+        .pricing-card {
+            border-radius: 24px; padding: 40px 32px; text-align: center;
+            border: 2px solid var(--border-light); transition: all 0.3s ease;
+            position: relative;
+        }
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .pricing-card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(8,145,178,0.15);
+        }
+        .pricing-badge {
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white; padding: 6px 20px; border-radius: 100px;
+            font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .pricing-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .pricing-price { font-size: 48px; font-weight: 800; color: var(--text-dark); margin: 16px 0; }
+        .pricing-price span { font-size: 18px; font-weight: 500; color: var(--text-muted); }
+        .pricing-or { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+        .pricing-alt { font-size: 16px; font-weight: 600; color: var(--text-body); margin-bottom: 24px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; }
+        .pricing-features li {
+            padding: 10px 0; font-size: 15px; color: var(--text-body);
+            border-bottom: 1px solid var(--border-light);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-features .check { color: #10B981; font-weight: 700; font-size: 18px; }
+        .pricing-features .limit { color: var(--text-muted); }
+
+        /* ── What's New ── */
+        .whats-new { padding: 100px 0; background: var(--bg-light); }
+        .new-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 800px; margin: 0 auto; }
+        .new-card {
+            background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: 16px; padding: 24px; display: flex; gap: 16px; align-items: flex-start;
             transition: all 0.3s ease;
         }
-
-        .feature-card:hover {
-            border-color: rgba(8, 145, 178, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 18px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .feature-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .feature-icon-emoji {
-            width: 72px;
-            height: 72px;
+        .new-card:hover { border-color: rgba(8,145,178,0.3); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+        .new-icon {
+            width: 48px; height: 48px; border-radius: 12px;
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; flex-shrink: 0;
         }
+        .new-card h4 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+        .new-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
-        .feature-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        .cta {
-            padding: 100px 0;
-            text-align: center;
-            background: var(--bg-white);
-        }
-
+        /* ── CTA ── */
+        .cta { padding: 100px 0; text-align: center; background: var(--bg-white); }
         .cta-card {
-            background: linear-gradient(135deg, rgba(8, 145, 178, 0.08), rgba(14, 165, 233, 0.04));
-            border: 1px solid rgba(8, 145, 178, 0.2);
-            border-radius: 32px;
-            padding: 80px 40px;
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, rgba(8,145,178,0.08), rgba(14,165,233,0.04));
+            border: 1px solid rgba(8,145,178,0.2); border-radius: 32px;
+            padding: 80px 40px; position: relative; overflow: hidden;
         }
+        .cta-content { position: relative; z-index: 1; }
+        .cta h2 { font-size: 40px; font-weight: 800; margin-bottom: 16px; color: var(--text-dark); }
+        .cta p { color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto 32px; }
 
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            font-size: 40px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--text-dark);
-        }
-
-        .cta p {
-            color: var(--text-muted);
-            font-size: 18px;
-            max-width: 500px;
-            margin: 0 auto 32px;
-        }
-
-        footer {
-            padding: 60px 0 40px;
-            border-top: 1px solid var(--border-light);
-            background: var(--bg-light);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-top: 16px;
-            max-width: 280px;
-        }
-
-        .footer-col h4 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .footer-col a {
-            display: block;
-            color: var(--text-body);
-            text-decoration: none;
-            font-size: 15px;
-            margin-bottom: 12px;
-            transition: color 0.2s;
-        }
-
-        .footer-col a:hover {
-            color: var(--accent);
-        }
-
+        /* ── Footer ── */
+        footer { padding: 60px 0 40px; border-top: 1px solid var(--border-light); background: var(--bg-light); }
+        .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
+        .footer-brand p { color: var(--text-muted); font-size: 14px; margin-top: 16px; max-width: 280px; }
+        .footer-col h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 20px; }
+        .footer-col a { display: block; color: var(--text-body); text-decoration: none; font-size: 15px; margin-bottom: 12px; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--accent); }
         .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-light);
-            flex-wrap: wrap;
-            gap: 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding-top: 40px; border-top: 1px solid var(--border-light); flex-wrap: wrap; gap: 20px;
         }
+        .footer-bottom p { color: var(--text-muted); font-size: 14px; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
 
-        .footer-bottom p {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-dark);
-            font-size: 24px;
-            cursor: pointer;
-            padding: 8px;
-        }
-
+        /* ── Mobile Menu ── */
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-dark); font-size: 24px; cursor: pointer; padding: 8px; }
         .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 84px;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
-            padding: 20px;
-            z-index: 99;
-            flex-direction: column;
-            gap: 16px;
+            display: none; position: fixed; top: 84px; left: 0; right: 0;
+            background: rgba(255,255,255,0.98); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light); padding: 20px; z-index: 99;
+            flex-direction: column; gap: 16px;
         }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 18px; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
+        .mobile-menu a:last-child { border-bottom: none; }
 
-        .mobile-menu.open {
-            display: flex;
-        }
-
-        .mobile-menu a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 18px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .mobile-menu a:last-child {
-            border-bottom: none;
-        }
-
+        /* ── Responsive ── */
         @media (max-width: 900px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .demo-grid { grid-template-columns: 1fr; gap: 16px; }
+            .demo-arrow { transform: rotate(90deg); }
         }
-
         @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding: 140px 0 60px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .screenshot-item:first-child {
-                margin-left: 24px;
-            }
-
-            .screenshot-item:last-child {
-                margin-right: 24px;
-            }
-
-            .screenshot-frame {
-                width: 240px;
-            }
-
-            .cta-card {
-                padding: 50px 24px;
-            }
-
-            .cta h2 {
-                font-size: 28px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
+            nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding: 140px 0 60px; }
+            .hero h1 { font-size: 36px; min-height: 100px; }
+            .hero p { font-size: 17px; }
+            .screenshot-item:first-child { margin-left: 24px; }
+            .screenshot-item:last-child { margin-right: 24px; }
+            .screenshot-frame { width: 240px; }
+            .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+            .step-arrow { display: none; }
+            .features-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .new-grid { grid-template-columns: 1fr; }
+            .cta-card { padding: 50px 24px; }
+            .cta h2 { font-size: 28px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -588,38 +343,114 @@
             <nav>
                 <a href="#features">Features</a>
                 <a href="#screenshots">Screenshots</a>
+                <a href="#pricing">Pricing</a>
                 <a href="support.html">Support</a>
-                <a href="privacy.html">Privacy</a>
             </nav>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">&#9776;</button>
         </div>
     </header>
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="#features" onclick="closeMenu()">Features</a>
         <a href="#screenshots" onclick="closeMenu()">Screenshots</a>
+        <a href="#pricing" onclick="closeMenu()">Pricing</a>
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy</a>
     </div>
 
     <main>
+        <!-- Hero with rotating text -->
         <section class="hero">
             <div class="container">
                 <div class="hero-badge">AI Powered</div>
-                <h1>Identify Any Fish<br><span>In Seconds</span></h1>
-                <p>Point your camera, get instant identification. Track catches, plan trips, check regulations, and get fishing forecasts — all in one app.</p>
+                <h1 id="heroTitle">Identify Any Fish<br><span class="rotating-text">In Seconds</span></h1>
+                <p>Your AI-powered fishing companion. Identify fish, find boat ramps, get spot analysis, and track your catches — all in one app.</p>
                 <div class="hero-buttons">
                     <a href="https://apps.apple.com/app/6760475234" class="btn btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                        </svg>
+                        <svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                         Download for iOS
                     </a>
-                    <a href="#screenshots" class="btn btn-primary">See Screenshots</a>
+                    <a href="#screenshots" class="btn btn-secondary">See It In Action</a>
                 </div>
             </div>
         </section>
 
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It Works</h2>
+                    <p>Three simple steps to smarter fishing</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Scan</h3>
+                        <p>Point your camera at any fish or lure. Our AI identifies it instantly with details, tips, and techniques.</p>
+                        <span class="step-arrow">&#8594;</span>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Explore</h3>
+                        <p>Analyze any fishing spot for species, bait recommendations, best times, and regulations. Find nearby boat ramps and bait shops.</p>
+                        <span class="step-arrow">&#8594;</span>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Catch</h3>
+                        <p>Track your catches with GPS, build your Fish Cooler collection across 198 species, and get 14-day weather forecasts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before / After Demo -->
+        <section class="demo-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>See AI Fish ID In Action</h2>
+                    <p>Snap a photo and get instant species identification</p>
+                </div>
+                <div class="demo-grid">
+                    <div>
+                        <div class="demo-before">
+                            <img src="screenshots/photo_large_mouth_bass.jpeg" alt="Largemouth Bass Photo">
+                        </div>
+                        <div class="demo-label">Your Photo</div>
+                    </div>
+                    <div class="demo-arrow">&#8594;</div>
+                    <div>
+                        <div class="demo-result-card">
+                            <h4>Largemouth Bass</h4>
+                            <div class="sci-name">Micropterus salmoides</div>
+                            <div class="detail-row">
+                                <span class="detail-label">Confidence</span>
+                                <span class="detail-value" style="color: #10B981;">97%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Habitat</span>
+                                <span class="detail-value">Freshwater</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Est. Length</span>
+                                <span class="detail-value">14 inches</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Est. Weight</span>
+                                <span class="detail-value">2.5 lbs</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Conservation</span>
+                                <span class="detail-value">Least Concern</span>
+                            </div>
+                        </div>
+                        <div class="demo-label">Instant AI Result</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots -->
         <section id="screenshots" class="screenshots">
             <div class="section-header">
                 <h2>See FishWise in Action</h2>
@@ -627,62 +458,45 @@
             </div>
             <div class="screenshot-carousel">
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/spot_analysis.png" alt="Spot Analysis">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/spot_analysis.png" alt="Spot Analysis"></div>
                     <div class="screenshot-label">Spot Analysis</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/bait_tackle.png" alt="Bait & Tackle">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/bait_tackle.png" alt="Bait & Tackle"></div>
                     <div class="screenshot-label">Bait & Tackle</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/fishing_map.png" alt="Fishing Map">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/fishing_map.png" alt="Fishing Map"></div>
                     <div class="screenshot-label">Fishing Map</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/fish_detail.png" alt="Fish Details">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/fish_detail.png" alt="Fish Details"></div>
                     <div class="screenshot-label">Fish Details</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/tackle_box.png" alt="Tackle Box">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/tackle_box.png" alt="Tackle Box"></div>
                     <div class="screenshot-label">Tackle Box</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/lure_details.png" alt="Lure Details">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/lure_details.png" alt="Lure Details"></div>
                     <div class="screenshot-label">Lure Details</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/fish_cooler.png" alt="Fish Cooler">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/fish_cooler.png" alt="Fish Cooler"></div>
                     <div class="screenshot-label">Fish Cooler</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/weather_forecast.png" alt="Weather Forecast">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/weather_forecast.png" alt="Weather Forecast"></div>
                     <div class="screenshot-label">Weather Forecast</div>
                 </div>
                 <div class="screenshot-item">
-                    <div class="screenshot-frame">
-                        <img src="screenshots/water_conditions.png" alt="Water Conditions">
-                    </div>
+                    <div class="screenshot-frame"><img src="screenshots/water_conditions.png" alt="Water Conditions"></div>
                     <div class="screenshot-label">Water Conditions</div>
                 </div>
             </div>
         </section>
 
+        <!-- Video -->
         <section class="video-section">
             <div class="container">
                 <div class="section-header">
@@ -690,17 +504,12 @@
                     <p>See how easy it is to identify fish and explore fishing spots</p>
                 </div>
                 <div class="video-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/U-YZLuha41A"
-                        title="FishWise Promo"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                    <iframe src="https://www.youtube.com/embed/U-YZLuha41A" title="FishWise Promo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
 
+        <!-- Features -->
         <section id="features" class="features">
             <div class="container">
                 <div class="section-header">
@@ -709,61 +518,129 @@
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="onboarding-scan.png" alt="Fish ID">
-                        </div>
+                        <div class="feature-icon"><img src="onboarding-scan.png" alt="Fish ID"></div>
                         <h3>Instant Fish ID</h3>
                         <p>Point your camera at any fish and get instant identification powered by advanced AI. Works with thousands of species worldwide.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="onboarding-catches.png" alt="Catch Tracking">
-                        </div>
+                        <div class="feature-icon"><img src="onboarding-catches.png" alt="Catch Tracking"></div>
                         <h3>Catch Tracking</h3>
-                        <p>Log your catches with photos, measurements, location, and notes. Build your personal fishing journal and track your progress.</p>
+                        <p>Log your catches with photos, GPS location, and measurements. Build your personal Fish Cooler across 198 species.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="onboarding-trips.png" alt="Trip Planner">
-                        </div>
-                        <h3>Trip Planner</h3>
-                        <p>Plan your fishing adventures with target species, locations, dates, and gear checklists. Never forget essential tackle again.</p>
+                        <div class="feature-icon-emoji">&#128506;</div>
+                        <h3>Fishing Map</h3>
+                        <p>Find nearby boat ramps, marinas, and bait shops. See your catches and saved spots pinned on an interactive map.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="onboarding-forecast.png" alt="Fishing Forecast">
-                        </div>
+                        <div class="feature-icon"><img src="onboarding-forecast.png" alt="Fishing Forecast"></div>
                         <h3>Fishing Forecast</h3>
-                        <p>Get AI-powered fishing conditions based on weather, moon phase, pressure, and more. Know the best times to fish.</p>
+                        <p>14-day weather forecasts with solunar feeding periods, barometric pressure, moon phase, and hourly fish activity scores.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="onboarding-regulations.png" alt="Regulations">
-                        </div>
+                        <div class="feature-icon"><img src="onboarding-regulations.png" alt="Regulations"></div>
                         <h3>Regulations</h3>
-                        <p>Stay legal with up-to-date fishing regulations for your state. License info, size limits, and seasonal restrictions.</p>
+                        <p>Stay legal with fishing regulations for your state. License info, size limits, bag limits, and seasonal restrictions.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="onboarding-knowledge.png" alt="Species Knowledge">
-                        </div>
-                        <h3>Species Knowledge</h3>
-                        <p>Learn about each fish with detailed info including habitat, diet, size, conservation status, and fun facts.</p>
+                        <div class="feature-icon"><img src="onboarding-knowledge.png" alt="300+ Lures"></div>
+                        <h3>300+ Lure Encyclopedia</h3>
+                        <p>Scan and identify lures with your camera. Browse 300+ lures with images, techniques, target species, and pro tips.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Pricing -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Simple Pricing</h2>
+                    <p>Start free, upgrade when you're ready</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>FishWise Free</h3>
+                        <div class="pricing-price">$0<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li><span class="check">&#10003;</span> 5 fish & lure scans per month</li>
+                            <li><span class="check">&#10003;</span> Spot analysis</li>
+                            <li><span class="check">&#10003;</span> Fishing map with nearby POIs</li>
+                            <li><span class="check">&#10003;</span> Weather forecasts</li>
+                            <li><span class="check">&#10003;</span> Fish Cooler</li>
+                            <li><span class="check">&#10003;</span> Offline mode</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/6760475234" class="btn btn-secondary" style="width:100%;justify-content:center;">Get Started Free</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Most Popular</div>
+                        <h3>FishWise Pro</h3>
+                        <div class="pricing-price">$5.99<span>/month</span></div>
+                        <div class="pricing-or">or</div>
+                        <div class="pricing-alt">$29.99/year (save 58%)</div>
+                        <ul class="pricing-features">
+                            <li><span class="check">&#10003;</span> <strong>Unlimited</strong> fish & lure scans</li>
+                            <li><span class="check">&#10003;</span> Spot analysis</li>
+                            <li><span class="check">&#10003;</span> Fishing map with nearby POIs</li>
+                            <li><span class="check">&#10003;</span> Weather forecasts</li>
+                            <li><span class="check">&#10003;</span> Fish Cooler</li>
+                            <li><span class="check">&#10003;</span> Offline mode</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/6760475234" class="btn btn-primary" style="width:100%;justify-content:center;">Start Pro</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What's New -->
+        <section class="whats-new">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What's New in v2.1</h2>
+                    <p>The latest features and improvements</p>
+                </div>
+                <div class="new-grid">
+                    <div class="new-card">
+                        <div class="new-icon">&#128506;</div>
+                        <div>
+                            <h4>Fishing Map</h4>
+                            <p>Long press anywhere to find nearby boat ramps, marinas, and bait shops with addresses and directions.</p>
+                        </div>
+                    </div>
+                    <div class="new-card">
+                        <div class="new-icon">&#9889;</div>
+                        <div>
+                            <h4>Faster Spot Analysis</h4>
+                            <p>Sections now load in parallel for a noticeably snappier experience.</p>
+                        </div>
+                    </div>
+                    <div class="new-card">
+                        <div class="new-icon">&#127907;</div>
+                        <div>
+                            <h4>Better Lure Matching</h4>
+                            <p>Improved AI lure recognition with new lures like the Strike King Red Eye Shad.</p>
+                        </div>
+                    </div>
+                    <div class="new-card">
+                        <div class="new-icon">&#128274;</div>
+                        <div>
+                            <h4>Enhanced Security</h4>
+                            <p>API keys moved to a secure server proxy. No sensitive data stored in the app.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
         <section class="cta">
             <div class="container">
                 <div class="cta-card">
                     <div class="cta-content">
                         <h2>Ready to Fish Smarter?</h2>
-                        <p>Download FishWise and start identifying fish, tracking catches, and planning trips today.</p>
+                        <p>Download FishWise and start identifying fish, finding fishing spots, and tracking your catches today.</p>
                         <a href="https://apps.apple.com/app/6760475234" class="btn btn-primary">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                            </svg>
+                            <svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                             Download for iOS
                         </a>
                     </div>
@@ -780,18 +657,19 @@
                         <img src="icon.png" alt="FishWise" class="logo-icon">
                         <span class="logo-text">FishWise</span>
                     </a>
-                    <p>Your smart fishing companion. Identify fish, track catches, and plan trips with AI-powered technology.</p>
+                    <p>Your AI-powered fishing companion. Identify fish, find fishing spots, and track your catches.</p>
                 </div>
                 <div class="footer-col">
                     <h4>App</h4>
                     <a href="#features">Features</a>
                     <a href="#screenshots">Screenshots</a>
+                    <a href="#pricing">Pricing</a>
                     <a href="https://apps.apple.com/app/6760475234">Download</a>
                 </div>
                 <div class="footer-col">
                     <h4>Support</h4>
                     <a href="support.html">Help Center</a>
-                    <a href="/cdn-cgi/l/email-protection#88fbfdf8f8e7fafcc8e9f8f8fbbcfdbaa6ebe7e5">Contact Us</a>
+                    <a href="mailto:support@apps4u2.com">Contact Us</a>
                 </div>
                 <div class="footer-col">
                     <h4>Legal</h4>
@@ -800,17 +678,46 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 AI4U LLC. All rights reserved.</p>
+                <p>&copy; 2026 AI4U LLC. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="privacy.html">Privacy</a>
                     <a href="terms.html">Terms</a>
-                    <a href="/cdn-cgi/l/email-protection#53202623233c212713322323206726617d303c3e">Contact</a>
+                    <a href="mailto:support@apps4u2.com">Contact</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Mobile menu
         function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('open'
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+        }
+
+        // Rotating hero text
+        const phrases = [
+            'Explore Fishing Spots',
+            'Target Fish with Lures & Bait',
+            'Find Boat Ramps & Bait Shops',
+            'Identify Any Fish',
+            'Track Your Catches'
+        ];
+        let phraseIndex = 0;
+        const heroTitle = document.getElementById('heroTitle');
+
+        function rotateText() {
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            const span = heroTitle.querySelector('.rotating-text');
+            span.style.animation = 'none';
+            span.offsetHeight; // trigger reflow
+            span.textContent = phrases[phraseIndex];
+            span.style.animation = 'fadeUp 0.5s ease';
+        }
+
+        setInterval(rotateText, 3000);
+    </script>
+</body>
+</html>
