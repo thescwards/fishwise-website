@@ -285,9 +285,28 @@
             font-size: 14px;
         }
 
+        .video-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .video-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            aspect-ratio: 9 / 16;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+        }
+
         .features {
             padding: 100px 0;
-            background: var(--bg-light);
+            background: var(--bg-white);
         }
 
         .features-grid {
@@ -590,7 +609,7 @@
                 <h1>Identify Any Fish<br><span>In Seconds</span></h1>
                 <p>Point your camera, get instant identification. Track catches, plan trips, check regulations, and get fishing forecasts — all in one app.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">
+                    <a href="https://apps.apple.com/app/6760475234" class="btn btn-primary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                         </svg>
@@ -609,51 +628,75 @@
             <div class="screenshot-carousel">
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/01_HomeScreen.png" alt="Home Screen">
+                        <img src="screenshots/spot_analysis.png" alt="Spot Analysis">
                     </div>
-                    <div class="screenshot-label">Home</div>
+                    <div class="screenshot-label">Spot Analysis</div>
                 </div>
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/02_ResultsScreen1.png" alt="Fish Identification">
+                        <img src="screenshots/bait_tackle.png" alt="Bait & Tackle">
                     </div>
-                    <div class="screenshot-label">Fish ID</div>
+                    <div class="screenshot-label">Bait & Tackle</div>
                 </div>
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/04_ResultsScreen3.png" alt="Catch Details">
+                        <img src="screenshots/fishing_map.png" alt="Fishing Map">
                     </div>
-                    <div class="screenshot-label">Catch Details</div>
+                    <div class="screenshot-label">Fishing Map</div>
                 </div>
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/03_ResultsScreen2.png" alt="Species Info">
+                        <img src="screenshots/fish_detail.png" alt="Fish Details">
                     </div>
-                    <div class="screenshot-label">Species Info</div>
+                    <div class="screenshot-label">Fish Details</div>
                 </div>
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/05_HistoryScreen.png" alt="Catch History">
+                        <img src="screenshots/tackle_box.png" alt="Tackle Box">
                     </div>
-                    <div class="screenshot-label">Catch History</div>
+                    <div class="screenshot-label">Tackle Box</div>
                 </div>
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/06_ForecastScreen.png" alt="Fishing Forecast">
+                        <img src="screenshots/lure_details.png" alt="Lure Details">
                     </div>
-                    <div class="screenshot-label">Forecast</div>
+                    <div class="screenshot-label">Lure Details</div>
                 </div>
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/07_RegulationsScreen.png" alt="Fishing Regulations">
+                        <img src="screenshots/fish_cooler.png" alt="Fish Cooler">
                     </div>
-                    <div class="screenshot-label">Regulations</div>
+                    <div class="screenshot-label">Fish Cooler</div>
                 </div>
                 <div class="screenshot-item">
                     <div class="screenshot-frame">
-                        <img src="screenshots/08_ResultsScreen4.png" alt="Red Snapper Details">
+                        <img src="screenshots/weather_forecast.png" alt="Weather Forecast">
                     </div>
-                    <div class="screenshot-label">More Details</div>
+                    <div class="screenshot-label">Weather Forecast</div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/water_conditions.png" alt="Water Conditions">
+                    </div>
+                    <div class="screenshot-label">Water Conditions</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Watch FishWise in Action</h2>
+                    <p>See how easy it is to identify fish and explore fishing spots</p>
+                </div>
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/U-YZLuha41A"
+                        title="FishWise Promo"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -717,7 +760,7 @@
                     <div class="cta-content">
                         <h2>Ready to Fish Smarter?</h2>
                         <p>Download FishWise and start identifying fish, tracking catches, and planning trips today.</p>
-                        <a href="#" class="btn btn-primary">
+                        <a href="https://apps.apple.com/app/6760475234" class="btn btn-primary">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                             </svg>
@@ -743,12 +786,12 @@
                     <h4>App</h4>
                     <a href="#features">Features</a>
                     <a href="#screenshots">Screenshots</a>
-                    <a href="#">Download</a>
+                    <a href="https://apps.apple.com/app/6760475234">Download</a>
                 </div>
                 <div class="footer-col">
                     <h4>Support</h4>
                     <a href="support.html">Help Center</a>
-                    <a href="mailto:support@apps4u2.com">Contact Us</a>
+                    <a href="/cdn-cgi/l/email-protection#88fbfdf8f8e7fafcc8e9f8f8fbbcfdbaa6ebe7e5">Contact Us</a>
                 </div>
                 <div class="footer-col">
                     <h4>Legal</h4>
@@ -761,22 +804,13 @@
                 <div class="footer-links">
                     <a href="privacy.html">Privacy</a>
                     <a href="terms.html">Terms</a>
-                    <a href="mailto:support@apps4u2.com">Contact</a>
+                    <a href="/cdn-cgi/l/email-protection#53202623233c212713322323206726617d303c3e">Contact</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('open');
-        }
-
-        function closeMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.remove('open');
-        }
-    </script>
-</body>
-</html>
+            menu.classList.toggle('open'
