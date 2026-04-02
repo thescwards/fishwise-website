@@ -165,29 +165,6 @@
             font-size: 24px; color: var(--accent); opacity: 0.4;
         }
 
-        /* ── Hero Phones (fan of 3) ── */
-        .hero-phones {
-            position: relative; display: flex; justify-content: center; align-items: center;
-            min-height: 580px; margin-top: 20px;
-        }
-        .phone-frame {
-            width: 260px; border-radius: 32px; overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.06);
-            border: 6px solid #1a1a2e; background: #1a1a2e;
-            position: relative; transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
-        }
-        .phone-frame img { width: 100%; display: block; }
-        .phone-frame:hover { transform: translateY(-8px); }
-        .phone-main { z-index: 3; }
-        .phone-left {
-            position: absolute; left: calc(50% - 310px); top: 40px; z-index: 2;
-            transform: scale(0.85) rotate(-6deg); opacity: 0.9;
-        }
-        .phone-right {
-            position: absolute; right: calc(50% - 310px); top: 40px; z-index: 2;
-            transform: scale(0.85) rotate(6deg); opacity: 0.9;
-        }
-
         /* ── Showcase (phone + text side by side) ── */
         .showcase { padding: 80px 0; }
         .showcase:nth-of-type(even) { background: var(--bg-light); }
@@ -381,9 +358,6 @@
             .hero { padding: 30px 0 60px; }
             .hero h1 { font-size: 36px; min-height: 100px; }
             .hero p { font-size: 17px; }
-            .hero-phones { min-height: 400px; margin-top: 40px; }
-            .phone-left, .phone-right { display: none; }
-            .phone-main { width: 220px; }
             .showcase-grid { grid-template-columns: 1fr; text-align: center; }
             .showcase-grid.reversed { direction: ltr; }
             .showcase-phone { order: -1; }
@@ -501,23 +475,8 @@
             </div>
         </section>
 
-        <!-- Screenshots — Hero Phone Fan -->
-        <section id="screenshots" style="padding: 80px 0; background: var(--bg-white);">
-            <div class="container">
-                <div class="section-header">
-                    <h2>See FishWise in Action</h2>
-                    <p>Your AI-powered fishing companion at a glance</p>
-                </div>
-                <div class="hero-phones">
-                    <div class="phone-frame phone-left"><img src="screenshots/spot_analysis.png" alt="Spot Analysis"></div>
-                    <div class="phone-frame phone-main"><img src="screenshots/fish_detail.png" alt="Fish Details"></div>
-                    <div class="phone-frame phone-right"><img src="screenshots/fishing_map.png" alt="Fishing Map"></div>
-                </div>
-            </div>
-        </section>
-
         <!-- Showcase: Spot Analysis -->
-        <section class="showcase">
+        <section id="screenshots" class="showcase">
             <div class="container">
                 <div class="showcase-grid">
                     <div class="showcase-phone">
@@ -649,7 +608,7 @@
                         <p>Log your catches with photos, GPS location, and measurements. Build your personal Fish Cooler across 200+ species.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon-emoji">&#128506;</div>
+                        <div class="feature-icon"><img src="onboarding-map.png" alt="Fishing Map"></div>
                         <h3>Fishing Map</h3>
                         <p>Find nearby boat ramps, marinas, and bait shops. See your catches and saved spots pinned on an interactive map.</p>
                     </div>
