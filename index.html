@@ -165,27 +165,54 @@
             font-size: 24px; color: var(--accent); opacity: 0.4;
         }
 
-        /* ── Screenshots ── */
-        .screenshots { padding: 80px 0; background: var(--bg-white); }
-        .screenshot-carousel {
-            display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
-            padding: 20px 0 40px; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        /* ── Hero Phones (fan of 3) ── */
+        .hero-phones {
+            position: relative; display: flex; justify-content: center; align-items: center;
+            min-height: 580px; margin-top: 20px;
         }
-        .screenshot-carousel::-webkit-scrollbar { display: none; }
-        .screenshot-item { flex: 0 0 auto; scroll-snap-align: center; position: relative; }
-        .screenshot-item:first-child { margin-left: calc(50vw - 150px); }
-        .screenshot-item:last-child { margin-right: calc(50vw - 150px); }
-        .screenshot-frame {
-            width: 280px; border-radius: 32px; overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 0 0 1px var(--border-light);
-            transition: transform 0.4s ease, box-shadow 0.4s ease; background: var(--bg-card);
+        .phone-frame {
+            width: 260px; border-radius: 32px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.06);
+            border: 6px solid #1a1a2e; background: #1a1a2e;
+            position: relative; transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
         }
-        .screenshot-item:hover .screenshot-frame {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 35px 70px rgba(0,0,0,0.2), 0 0 0 1px var(--border-light), 0 0 60px rgba(8,145,178,0.1);
+        .phone-frame img { width: 100%; display: block; }
+        .phone-frame:hover { transform: translateY(-8px); }
+        .phone-main { z-index: 3; }
+        .phone-left {
+            position: absolute; left: calc(50% - 310px); top: 40px; z-index: 2;
+            transform: scale(0.85) rotate(-6deg); opacity: 0.9;
         }
-        .screenshot-frame img { width: 100%; height: auto; display: block; }
-        .screenshot-label { text-align: center; margin-top: 16px; font-weight: 600; color: var(--text-muted); font-size: 14px; }
+        .phone-right {
+            position: absolute; right: calc(50% - 310px); top: 40px; z-index: 2;
+            transform: scale(0.85) rotate(6deg); opacity: 0.9;
+        }
+
+        /* ── Showcase (phone + text side by side) ── */
+        .showcase { padding: 80px 0; }
+        .showcase:nth-of-type(even) { background: var(--bg-light); }
+        .showcase:nth-of-type(odd) { background: var(--bg-white); }
+        .showcase-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            align-items: center; max-width: 1000px; margin: 0 auto;
+        }
+        .showcase-grid.reversed { direction: rtl; }
+        .showcase-grid.reversed > * { direction: ltr; }
+        .showcase-phone { display: flex; justify-content: center; }
+        .showcase-phone .phone-frame { width: 280px; }
+        .showcase-content h3 { font-size: 28px; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); }
+        .showcase-content p { font-size: 16px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+        .showcase-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .showcase-list li {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 15px; color: var(--text-body); line-height: 1.5;
+        }
+        .showcase-list .check {
+            width: 24px; height: 24px; border-radius: 8px;
+            background: rgba(16,185,129,0.1); color: #10B981;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 14px; font-weight: 700;
+        }
 
         /* ── Before / After Demo ── */
         .demo-section { padding: 100px 0; background: var(--bg-light); }
@@ -310,6 +337,11 @@
         .cta h2 { font-size: 40px; font-weight: 800; margin-bottom: 16px; color: var(--text-dark); }
         .cta p { color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto 32px; }
 
+        /* ── Logo ── */
+        .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 44px; height: 44px; border-radius: 10px; }
+        .logo-text { font-size: 20px; font-weight: 700; color: var(--text-dark); }
+
         /* ── Footer ── */
         footer { padding: 60px 0 40px; border-top: 1px solid var(--border-light); background: var(--bg-light); }
         .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
@@ -349,9 +381,12 @@
             .hero { padding: 30px 0 60px; }
             .hero h1 { font-size: 36px; min-height: 100px; }
             .hero p { font-size: 17px; }
-            .screenshot-item:first-child { margin-left: 24px; }
-            .screenshot-item:last-child { margin-right: 24px; }
-            .screenshot-frame { width: 240px; }
+            .hero-phones { min-height: 400px; margin-top: 40px; }
+            .phone-left, .phone-right { display: none; }
+            .phone-main { width: 220px; }
+            .showcase-grid { grid-template-columns: 1fr; text-align: center; }
+            .showcase-grid.reversed { direction: ltr; }
+            .showcase-phone { order: -1; }
             .steps-grid { grid-template-columns: 1fr; gap: 32px; }
             .step-arrow { display: none; }
             .features-grid { grid-template-columns: 1fr; }
@@ -466,48 +501,118 @@
             </div>
         </section>
 
-        <!-- Screenshots -->
-        <section id="screenshots" class="screenshots">
-            <div class="section-header">
-                <h2>See FishWise in Action</h2>
-                <p>Swipe through to explore all the features</p>
+        <!-- Screenshots — Hero Phone Fan -->
+        <section id="screenshots" style="padding: 80px 0; background: var(--bg-white);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>See FishWise in Action</h2>
+                    <p>Your AI-powered fishing companion at a glance</p>
+                </div>
+                <div class="hero-phones">
+                    <div class="phone-frame phone-left"><img src="screenshots/spot_analysis.png" alt="Spot Analysis"></div>
+                    <div class="phone-frame phone-main"><img src="screenshots/fish_detail.png" alt="Fish Details"></div>
+                    <div class="phone-frame phone-right"><img src="screenshots/fishing_map.png" alt="Fishing Map"></div>
+                </div>
             </div>
-            <div class="screenshot-carousel">
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/spot_analysis.png" alt="Spot Analysis"></div>
-                    <div class="screenshot-label">Spot Analysis</div>
+        </section>
+
+        <!-- Showcase: Spot Analysis -->
+        <section class="showcase">
+            <div class="container">
+                <div class="showcase-grid">
+                    <div class="showcase-phone">
+                        <div class="phone-frame"><img src="screenshots/spot_analysis.png" alt="Spot Analysis"></div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Analyze Any Fishing Spot</h3>
+                        <p>Drop a pin anywhere and get a full breakdown of what you can expect — species, techniques, and conditions.</p>
+                        <ul class="showcase-list">
+                            <li><span class="check">&#10003;</span> Species likely at the spot</li>
+                            <li><span class="check">&#10003;</span> Recommended bait &amp; lures</li>
+                            <li><span class="check">&#10003;</span> Best times &amp; seasonal tips</li>
+                            <li><span class="check">&#10003;</span> Local regulations</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/bait_tackle.png" alt="Bait & Tackle"></div>
-                    <div class="screenshot-label">Bait & Tackle</div>
+            </div>
+        </section>
+
+        <!-- Showcase: Bait & Tackle -->
+        <section class="showcase">
+            <div class="container">
+                <div class="showcase-grid reversed">
+                    <div class="showcase-phone">
+                        <div class="phone-frame"><img src="screenshots/bait_tackle.png" alt="Bait & Tackle"></div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Find the Right Bait &amp; Tackle</h3>
+                        <p>Get AI-powered recommendations for the best bait and lures based on your target species and conditions.</p>
+                        <ul class="showcase-list">
+                            <li><span class="check">&#10003;</span> Species-specific recommendations</li>
+                            <li><span class="check">&#10003;</span> Live bait &amp; artificial lures</li>
+                            <li><span class="check">&#10003;</span> Techniques &amp; rigging tips</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/fishing_map.png" alt="Fishing Map"></div>
-                    <div class="screenshot-label">Fishing Map</div>
+            </div>
+        </section>
+
+        <!-- Showcase: Fish Cooler -->
+        <section class="showcase">
+            <div class="container">
+                <div class="showcase-grid">
+                    <div class="showcase-phone">
+                        <div class="phone-frame"><img src="screenshots/fish_cooler.png" alt="Fish Cooler"></div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Build Your Fish Cooler</h3>
+                        <p>Track every catch with photos and GPS. Fill your collection across 200+ species and see your progress grow.</p>
+                        <ul class="showcase-list">
+                            <li><span class="check">&#10003;</span> Photo &amp; GPS catch logging</li>
+                            <li><span class="check">&#10003;</span> 200+ species to collect</li>
+                            <li><span class="check">&#10003;</span> Personal catch history</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/fish_detail.png" alt="Fish Details"></div>
-                    <div class="screenshot-label">Fish Details</div>
+            </div>
+        </section>
+
+        <!-- Showcase: Weather Forecast -->
+        <section class="showcase">
+            <div class="container">
+                <div class="showcase-grid reversed">
+                    <div class="showcase-phone">
+                        <div class="phone-frame"><img src="screenshots/weather_forecast.png" alt="Weather Forecast"></div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>14-Day Fishing Forecast</h3>
+                        <p>Plan your trips with detailed weather forecasts tailored for anglers.</p>
+                        <ul class="showcase-list">
+                            <li><span class="check">&#10003;</span> Solunar feeding periods</li>
+                            <li><span class="check">&#10003;</span> Barometric pressure &amp; moon phase</li>
+                            <li><span class="check">&#10003;</span> Hourly fish activity scores</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/tackle_box.png" alt="Tackle Box"></div>
-                    <div class="screenshot-label">Tackle Box</div>
-                </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/lure_details.png" alt="Lure Details"></div>
-                    <div class="screenshot-label">Lure Details</div>
-                </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/fish_cooler.png" alt="Fish Cooler"></div>
-                    <div class="screenshot-label">Fish Cooler</div>
-                </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/weather_forecast.png" alt="Weather Forecast"></div>
-                    <div class="screenshot-label">Weather Forecast</div>
-                </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-frame"><img src="screenshots/water_conditions.png" alt="Water Conditions"></div>
-                    <div class="screenshot-label">Water Conditions</div>
+            </div>
+        </section>
+
+        <!-- Showcase: Tackle Box & Lures -->
+        <section class="showcase">
+            <div class="container">
+                <div class="showcase-grid">
+                    <div class="showcase-phone">
+                        <div class="phone-frame"><img src="screenshots/tackle_box.png" alt="Tackle Box"></div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>300+ Lure Encyclopedia</h3>
+                        <p>Scan any lure with your camera or browse the full encyclopedia. Build your virtual tackle box.</p>
+                        <ul class="showcase-list">
+                            <li><span class="check">&#10003;</span> AI lure identification</li>
+                            <li><span class="check">&#10003;</span> Techniques &amp; target species</li>
+                            <li><span class="check">&#10003;</span> Save lures to your tackle box</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
